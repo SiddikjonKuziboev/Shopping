@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct RegisterView: View {
-    
+    @StateObject var viewModel = RegisterViewModel()
+  
     var body: some View {
         VStack {
             Text("Sign UP")
@@ -19,16 +20,22 @@ struct RegisterView: View {
             //TextField
             VStack(spacing: 10) {
                 
-                MainTextField(title: "Username" ,text: "", isCompleted: true, isTextIcon: false)
+                MainTextField(title: "Name",
+                              text: $viewModel.name,
+                              isCompleted: $viewModel.isCompleted)
                 
-                MainTextField(title: "Password", text: "", isCompleted: false, isTextIcon: true)
+                MainTextField(title: "Password",
+                              text: $viewModel.password,
+                              isCompleted: $viewModel.isCompleted)
                 
-                MainTextField(title: "Email Address", text: "", isCompleted: true, isTextIcon: false)
+                MainTextField(title: "Email Address",
+                              text: $viewModel.email,
+                              isCompleted: $viewModel.isCompleted)
                 
             }
             Spacer()
             MainButton(title: "Sign Up", height: 80) {
-                //action here
+                viewModel.register()
             }
         }
         .ignoresSafeArea(.all, edges: .bottom)

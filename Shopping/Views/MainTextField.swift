@@ -9,9 +9,8 @@ import SwiftUI
 
 struct MainTextField: View {
     var title: String = "Username"
-    @State var text: String = ""
-    @State var isCompleted: Bool
-    var isTextIcon = false
+    @Binding var text: String
+    @Binding var isCompleted: Bool
     private let iconName = "check"
     
     
@@ -21,20 +20,17 @@ struct MainTextField: View {
                 .foregroundStyle(.gray)
                 .font(.system(size: 13))
             HStack {
-            TextField("eee", text: $text)
-                .textFieldStyle(DefaultTextFieldStyle())
-                .foregroundStyle(.black)
-                .font(.system(size: 15))
+                TextField("eee", text: $text)
+                    .foregroundStyle(.black)
+                    .font(.system(size: 15))
                 Spacer()
-                if isTextIcon {
-                    Text("Strong")
-                        .font(.system(size: 11))
-                }else {
-                    Image(isCompleted ? iconName : "")
+                if isCompleted {
+                    Image(iconName)
                         .frame(width: 20, height: 20)
                 }
-              
-        }
+               
+                
+            }
             Divider()
         }
         .padding()
@@ -43,5 +39,5 @@ struct MainTextField: View {
 }
 
 #Preview {
-    MainTextField(isCompleted: true)
+    MainTextField(text: .constant("s"), isCompleted: .constant(false))
 }

@@ -17,9 +17,8 @@ struct ShoppingApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                LetGetStartedView()
-            }
+                MainView()
+            
         }
     }
 }

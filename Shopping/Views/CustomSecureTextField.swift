@@ -10,9 +10,7 @@ import SwiftUI
 struct CustomSecureTextField: View {
     
     var title: String = "Username"
-    @State var text: String = ""
-    @State var isCompleted: Bool
-    var isTextIcon = false
+    @Binding var text: String
     
     
     var body: some View {
@@ -29,6 +27,7 @@ struct CustomSecureTextField: View {
                 
                 Text("Strong")
                     .font(.system(size: 11))
+                    .foregroundStyle(.green)
                 
             }
             Divider()
@@ -40,5 +39,5 @@ struct CustomSecureTextField: View {
 }
 
 #Preview {
-    CustomSecureTextField(title: "abs", isCompleted: false)
+    CustomSecureTextField(text: .constant(""))
 }
