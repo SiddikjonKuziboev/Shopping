@@ -33,15 +33,20 @@ struct LoginView: View {
                             .foregroundStyle(.red)
                     }
                     
-                    MainTextField(title: "Email", text: $viewModel.email, isCompleted: $viewModel.isCompleted)
+                    MainTextField(title: "Email", keyType: .emailAddress , text: $viewModel.email, isCompleted: .constant(false), turnOffIcons: true)
                     
-                    CustomSecureTextField(title: "Password", text: $viewModel.password)
+                    CustomSecureTextField(title: "Password", text: $viewModel.password, turnOffIcons: true)
                     
                 }
+                
                 Text("Forgot password?")
                     .foregroundStyle(.red)
-                    .padding()
+            
+               
+                
             }
+            .padding()
+
             
             //Terms and conditions
             Spacer()
@@ -59,6 +64,7 @@ struct LoginView: View {
                             .font(.system(size: 13))
                         
                     }
+                   
                 }
                 
                 //Button
@@ -69,6 +75,9 @@ struct LoginView: View {
             }
         }
         .ignoresSafeArea(.all, edges: .bottom)
+        .navigationDestination(isPresented: $viewModel.userExistsInFirestore) {
+            MainTabView()
+        }
     }
     
 }

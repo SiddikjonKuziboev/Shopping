@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 class ProfileViewModel: ObservableObject {
  
-    @Published var user: User? = nil
+    @Published var user: UserDM? = nil
     
     init() {
         
@@ -26,7 +26,7 @@ class ProfileViewModel: ObservableObject {
             guard let data = snapshot?.data() , error == nil else {
                 return
             }
-            self?.user = User(id: data["id"] as? String ?? "",
+            self?.user = UserDM(id: data["id"] as? String ?? "",
                               name: data["name"] as? String ?? "",
                               email: data["email"] as? String ?? "",
                               joined: data["joined"] as? TimeInterval ?? 0.0)

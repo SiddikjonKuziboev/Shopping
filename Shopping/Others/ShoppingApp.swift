@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+import GoogleSignIn
 
 @main
 struct ShoppingApp: App {
@@ -15,10 +16,23 @@ struct ShoppingApp: App {
         FirebaseApp.configure()
     }
     
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
                 MainView()
-            
         }
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        FirebaseApp.configure()
+    }
+    
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+      return GIDSignIn.sharedInstance.handle(url)
     }
 }

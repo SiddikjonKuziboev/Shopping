@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
+    @StateObject var authViewModel = AuthenticationViewModel()
+    
     
     var body: some View {
         NavigationStack {
@@ -30,7 +32,7 @@ struct ProfileView: View {
     }
     
     @ViewBuilder
-    func profile(user: User)-> some View {
+    func profile(user: UserDM)-> some View {
         Image(systemName: "person.circle")
             .resizable()
             .aspectRatio(contentMode: .fit)
@@ -60,7 +62,7 @@ struct ProfileView: View {
                        height: 35,
                        cornerRadius: 10)
             {
-                viewModel.logOut()
+                authViewModel.signOut()
             }
         }
     }

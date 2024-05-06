@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainButton: View {
     let title: String
+    var titleColor: Color = .white
     var backgroundColor: Color = .purple
     var height: CGFloat = 40
     var cornerRadius: CGFloat = 0
@@ -24,7 +25,7 @@ struct MainButton: View {
                     .frame(height: height)
             
                 Text(title)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(titleColor)
                     .bold()
             }
         }

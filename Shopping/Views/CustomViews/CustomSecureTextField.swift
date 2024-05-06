@@ -11,7 +11,8 @@ struct CustomSecureTextField: View {
     
     var title: String = "Username"
     @Binding var text: String
-    
+    var turnOffIcons = false
+
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,11 +25,13 @@ struct CustomSecureTextField: View {
                     .foregroundStyle(.black)
                     .font(.system(size: 15))
                 Spacer()
-                
-                Text("Strong")
-                    .font(.system(size: 11))
-                    .foregroundStyle(.green)
-                
+                if !turnOffIcons {
+                    Text("Strong")
+                        .font(.system(size: 11))
+                        .foregroundStyle(.green)
+                    
+                }
+
             }
             Divider()
         }

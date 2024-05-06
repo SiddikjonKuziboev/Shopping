@@ -1,18 +1,14 @@
 //
-//  MainView.swift
+//  TabView.swift
 //  Shopping
 //
-//  Created by Siddikjon Kuziboev on 30/04/24.
+//  Created by Siddikjon Kuziboev on 06/05/24.
 //
 
 import SwiftUI
 
-struct MainView: View {
-    
-    @StateObject var viewModel = MainViewModel()
-    
+struct MainTabView: View {
     var body: some View {
-        if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
             TabView {
                 ContentView()
                     .tabItem {
@@ -24,12 +20,10 @@ struct MainView: View {
                         Label("Profile", systemImage: "person.circle")
                     }
             }
-        }else {
-            LetGetStartedView()
-        }
+        
     }
 }
 
 #Preview {
-    MainView()
+    MainTabView()
 }

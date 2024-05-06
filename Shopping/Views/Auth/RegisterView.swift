@@ -39,6 +39,9 @@ struct RegisterView: View {
             }
         }
         .ignoresSafeArea(.all, edges: .bottom)
+        .navigationDestination(isPresented: $viewModel.userExistsInFirestore) {
+            GenderView()
+        }
     }
 }
 

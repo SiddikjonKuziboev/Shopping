@@ -9,10 +9,12 @@ import SwiftUI
 
 struct MainTextField: View {
     var title: String = "Username"
+    var keyType: UIKeyboardType = .default
     @Binding var text: String
     @Binding var isCompleted: Bool
     private let iconName = "check"
     
+    var turnOffIcons = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -23,8 +25,9 @@ struct MainTextField: View {
                 TextField("eee", text: $text)
                     .foregroundStyle(.black)
                     .font(.system(size: 15))
+                    .keyboardType(keyType)
                 Spacer()
-                if isCompleted {
+                if isCompleted && !turnOffIcons {
                     Image(iconName)
                         .frame(width: 20, height: 20)
                 }
