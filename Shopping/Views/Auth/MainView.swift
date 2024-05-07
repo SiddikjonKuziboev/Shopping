@@ -13,7 +13,7 @@ struct MainView: View {
     @StateObject var authenticateModel = AuthenticationViewModel()
     
     var body: some View {
-        if  viewModel.isSignedIn && viewModel.checkUserInFirestore {
+        if viewModel.isSignedIn {
             MainTabView()
         }else {
             NavigationStack {

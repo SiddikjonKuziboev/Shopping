@@ -30,22 +30,6 @@ class MainViewModel: ObservableObject {
     public var isSignedIn: Bool {
         return Auth.auth().currentUser != nil
     }
-    
-    func checkUserInFirestore(userId: String?)-> Bool {
-        guard let userId = userId else { return false}
-           let usersCollection = Firestore.firestore().collection("users")
-           usersCollection.document(userId).getDocument { snapshot, error in
-               if let error = error {
-                   print("Error fetching user document: \(error.localizedDescription)")
-                   return
-               }
-
-               if let _ = snapshot?.data() {
-                   return true
-               } else {
-                   return false
-               }
-           }
-       }
+   
     
 }
